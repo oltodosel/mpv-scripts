@@ -1,10 +1,9 @@
---~ 2018.03.14
 --~ Shows total playtime of current playlist.
 --~ If number of items in playlist didn't change since last calculation - it doesn't probe files anew.
 --~ requires ffprobe (ffmpeg)
 
 key_binding = 'F12'
--- save probed files to a file for future reference -- ${fname} \t ${duration}
+-- save probed files for future reference -- ${fname} \t ${duration}
 save_probed = true
 saved_probed_filename = '~/.config/mpv/scripts/total_playtime.list'
 
