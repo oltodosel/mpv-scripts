@@ -87,7 +87,7 @@ function total_time()
 		end
 	end
 	
-	mp.osd_message(string.format("%s/%s \n %s/%s", disp_time(played_dur), disp_time(total_dur), mp.get_property("playlist-pos-1"), mp.get_property("playlist-count")))
+	mp.osd_message(string.format("%s/%s (%s%%) \n %s/%s", disp_time(played_dur), disp_time(total_dur), math.floor(played_dur*100/total_dur), mp.get_property("playlist-pos-1"), mp.get_property("playlist-count")))
 end
 
 mp.add_forced_key_binding(key_binding, "total_time", total_time)
