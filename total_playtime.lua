@@ -81,9 +81,11 @@ function total_time()
 	current_pos = mp.get_property_number("playlist-pos-1", 0)
 	
 	for i, fn in pairs(playlist) do
-		total_dur = total_dur + fn[2]
-		if i < current_pos then
-			played_dur = played_dur + fn[2]
+		if fn[2] ~= nil then
+			total_dur = total_dur + fn[2]
+			if i < current_pos then
+				played_dur = played_dur + fn[2]
+			end
 		end
 	end
 	
@@ -91,3 +93,29 @@ function total_time()
 end
 
 mp.add_forced_key_binding(key_binding, "total_time", total_time)
+
+
+
+function sort_playlist(startover)
+	local length = mp.get_property_number('playlist-count', 0)
+	if length < 2 then return end
+	--use insertion sort on playlist to make it easy to order files with playlist-move
+	for outer=1, length-1, 1 do
+	  local outerfile = get_name_from_index(outer, true)
+	  local inner = outer - 1
+	  while inner >= 0 and dosort(outerfile, get_name_from_index(inner, true)) do
+		inner = inner - 1
+	  end
+	  inner = inner + 1
+	  if outer ~= inner then
+		mp.commandv('playlist-move', outer, inner)
+	  end
+	end
+	cursor = mp.get_property_number('playlist-pos', 0)
+	if startover then
+	  mp.set_property('playlist-pos', 0)
+	end
+	if playlist_visible then showplaylist() end
+end
+
+mp.add_forced_key_binding('KP4', "sort_playlist", sort_playlist)
