@@ -1,6 +1,3 @@
-# mpv-scripts
-My and adopted lua scripts for mpv.
-
 # speed.lua
 Changing speed based on filename(regex)/path.
 
