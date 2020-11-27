@@ -9,3 +9,9 @@ Use [rubberband](https://github.com/jgreco/mpv-scripts/blob/master/rubberband_he
 # total_playtime.lua
 Shows total playtime of current playlist.
 
+# show_chapters.lua
+Show chapters and their time at the bottom left corner.
+  * at a hotkey
+  * at given paths
+  * [example](https://github.com/oltodosel/mpv-scripts/raw/master/show_chapters.jpeg)
+  
