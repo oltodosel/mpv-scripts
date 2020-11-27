@@ -13,5 +13,5 @@ Shows chapters and their time at the bottom left corner.
   * [example](https://github.com/oltodosel/mpv-scripts/raw/master/show_chapters.jpeg)
   
 # speed_osd3.lua
-Recalculates `osd-msg3` timecodes with playback-speed != 1
+Recalculates `osd-msg3` timecodes with speed != 1
 * Example at 1.5x : 00:24:43 -> 00:16:29
