@@ -57,7 +57,7 @@ function total_time()
 			
 			f = string.gsub(f, "\"", "\\\"")
 			
-			if probed_file[f] then
+			if save_probed and probed_file[f] then
 				fprobe = probed_file[f]
 			else
 				fprobe = io.popen('ffprobe -v quiet -of csv=p=0 -show_entries format=duration "'.. f .. '"'):read()
