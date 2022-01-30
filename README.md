@@ -15,3 +15,7 @@ Shows chapters and their time at the bottom left corner.
 # speed_osd3.lua
 Recalculates `osd-msg3` timecodes with speed != 1
 * Example at 1.5x : 00:24:43 -> 00:16:29
+
+# pause-indicator.lua
+Displays an indicator in the middle of the screen while mpv is paused.
+[Preview](https://github.com/oltodosel/mpv-scripts/raw/master/pause-indicator.jpg)
