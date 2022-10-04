@@ -8,6 +8,8 @@ save_probed = true
 saved_probed_filename = '~/.config/mpv/scripts/total_playtime.list'
 
 -----------------------------------
+local assdraw = require('mp.assdraw')
+local osd_w, osd_h, aspect = mp.get_osd_size()
 
 saved_probed_filename = saved_probed_filename:gsub('~', os.getenv('HOME'))
 
@@ -68,12 +70,22 @@ function total_time()
 					file:close()
 				end
 			end
+			if ( tonumber(fprobe) ~= nil) then
+				playlist[#playlist + 1] = { f, tonumber(fprobe), pl_num }
+			end
 			
-			playlist[#playlist + 1] = { f, tonumber(fprobe), pl_num }
 			
-			mp.osd_message(string.format("Calculating: %s/%s", #playlist, mp.get_property("playlist-count")))
+			local ass = assdraw:ass_new()
+			ass:new_event()
+			ass:an(3)
+			ass:append(string.format("Calculating: %s/%s", #playlist, mp.get_property("playlist-count")))
+			mp.set_osd_ass(osd_w, osd_h, ass.text)
+
+			-- mp.osd_message(string.format("Calculating: %s/%s", #playlist, mp.get_property("playlist-count")))
 		end
 		playlist_total = #playlist
+
+        mp.set_osd_ass(0, 0, "{}")
 	end
 	
 	total_dur = 0
@@ -88,8 +100,19 @@ function total_time()
 			end
 		end
 	end
+
+	osdm = string.format(" %s / %s (%s%%) \n %s / %s (%.2fx) \n %s/%s",
+			disp_time(played_dur),
+			disp_time(total_dur),
+			math.floor(played_dur*100/total_dur),
+			disp_time(played_dur/mp.get_property_number("speed")),
+			disp_time(total_dur/mp.get_property_number("speed")),
+			mp.get_property_number("speed"),
+			mp.get_property("playlist-pos-1"),
+			mp.get_property("playlist-count")
+		)
 	
-	mp.osd_message(string.format("%s/%s (%s%%) \n %s/%s", disp_time(played_dur), disp_time(total_dur), math.floor(played_dur*100/total_dur), mp.get_property("playlist-pos-1"), mp.get_property("playlist-count")))
+	mp.osd_message(osdm)
 end
 
 mp.add_forced_key_binding(key_binding, "total_time", total_time)
@@ -107,6 +130,7 @@ function sort_playlist(start_0)
 	total_time()
 
 	table.sort(playlist, function (left, right)
+		-- print(left[2])
 		if reverse == 0 then
 			return left[2] < right[2]
 		else
