@@ -4,7 +4,11 @@ Changing speed based on regex of filename/path.
  * Use [rubberband](https://github.com/jgreco/mpv-scripts/blob/master/rubberband_helper.lua) for higher speeds.
 
 # total_playtime.lua
-  * Shows total playtime of current playlist.
+  * Shows total playtime of current playlist with `F12`.
+  * Sorts playlist by duration with `KP4`.
+  * * Repeated keypress reverses the order.
+  * Sorts playlist by duration and jumps to the first entry with `shift+KP4`.
+  * * Repeated keypress reverses the order.
   * On `Windows` it might flash cmd window for each iteration. [Reason](https://stackoverflow.com/questions/6362841/use-lua-os-execute-in-windows-to-launch-a-program-with-out-a-flash-of-cmd/6365296#6365296)
 
 # show_chapters.lua
