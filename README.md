@@ -10,6 +10,7 @@ Changing speed based on regex of filename/path.
   * Sorts playlist by duration and jumps to the first entry with `shift+KP4`.
   * * Repeated keypress reverses the order.
   * On `Windows` it might flash cmd window for each iteration. [Reason](https://stackoverflow.com/questions/6362841/use-lua-os-execute-in-windows-to-launch-a-program-with-out-a-flash-of-cmd/6365296#6365296)
+  * On `Windows` change the script according to [this](https://github.com/oltodosel/mpv-scripts/issues/1#issuecomment-894465495)
 
 # show_chapters.lua
 Shows chapters and their time at the bottom left corner.
