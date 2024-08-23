@@ -25,3 +25,6 @@ Recalculates `osd-msg3` timecodes with speed != 1
 # pause-indicator.lua
 Displays an indicator in the middle of the screen while mpv is paused.
 [Preview](https://github.com/oltodosel/mpv-scripts/raw/master/pause-indicator.jpg)
+
+# show_podcast_description.lua
+Displays content from `mp.get_property('metadata/lyrics')`
