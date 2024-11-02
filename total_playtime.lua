@@ -58,6 +58,7 @@ function total_time()
 			until n == 0
 			
 			f = string.gsub(f, "\"", "\\\"")
+			f = string.gsub(f, "%$", "\\$")
 			
 			if save_probed and probed_file[f] then
 				fprobe = probed_file[f]
